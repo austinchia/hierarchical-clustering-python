@@ -13,7 +13,6 @@ data_scaled = scaler.fit_transform(data)
 # Generates linkage matrix using Ward’s method
 linkage_matrix = linkage(data_scaled, method='ward')
 plt.figure(figsize=(8, 4))
-plt.show()
 
 
 # Plots dendogram
@@ -26,3 +25,9 @@ plt.show()
 # Cuts dendogram to get a specific number of clusters
 clusters = fcluster(linkage_matrix, t=2, criterion='maxclust')
 print(clusters)
+
+plt.scatter(data_scaled[:, 0], data_scaled[:, 1], c=clusters, cmap='rainbow')
+plt.title('Clusters')
+plt.xlabel('Feature 1')
+plt.ylabel('Feature 2')
+plt.show()
